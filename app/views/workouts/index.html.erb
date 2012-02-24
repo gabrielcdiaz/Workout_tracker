@@ -3,6 +3,7 @@
 <table>
   <tr>
 	<th>Name</th>
+	<th>Group</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 <% @workouts.each do |workout| %>
   <tr>
 	<td><%= workout.name %></td>
+	<td><%#= workout.group.name %></td>
     <td><%= link_to 'Show', workout %></td>
     <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
     <td><%= link_to 'Destroy', workout, confirm: 'Are you sure?', method: :delete %></td>
@@ -21,3 +23,15 @@
 <br />
 
 <%= link_to 'New Workout', new_workout_path %>
+
+
+<br />
+
+<%= link_to "New Exercise", new_exercise_path(@exercise) %>
+
+<br />
+
+<%= link_to "New Group", new_group_path(@group) %>
+
+
+

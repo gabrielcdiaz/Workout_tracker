@@ -1,4 +1,6 @@
 Workouts::Application.routes.draw do
+  resources :groups
+
   resources :exercises
 
   resources :workouts

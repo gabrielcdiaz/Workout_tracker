@@ -15,8 +15,7 @@ class Workout < ActiveRecord::Base
   def exercise
   end
   
-  def group
-  end
+ 
   
   # def exercise=(exercise_id)
   #   self.setlists.build(:exercise_id => exercise_id)

@@ -13,6 +13,12 @@
   <% end %>
 
 	<div class "field">
+		<%#= f.label :exercise, "Describe the workout" %><br />
+		<%= f.select :group_id, Group.all.collect {|e| [e.name, e.id]} %>
+	</div>
+	<br />
+
+	<div class "field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
 	</div> 
@@ -22,12 +28,13 @@
 		<%= f.text_area :description %>
 	</div>
 
-	<%= f.fields_for :setlists, [@workout.setlists.build, @workout.setlists.build, @workout.setlists.build,@workout.setlists.build,@workout.setlists.build] do |s| %>
+	<%= f.fields_for :setlists, @setlists do |s| %>
 	<div class "field">
 		<%#= f.label :exercise, "Describe the workout" %><br />
-		<%= s.select :exercise_id, Exercise.all.collect{|e| [e.name, e.id]} %>
+		<%= s.select :exercise_id, Exercise.all.collect {|e| [e.name, e.id]} %>
 	</div>
 	<% end %><br />
+	
 	
   <div class="actions">
     <%= f.submit %>

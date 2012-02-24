@@ -25,7 +25,10 @@ class WorkoutsController < ApplicationController
   # GET /workouts/new.json
   def new
     @workout = Workout.new
-
+    # The way I defined this setlist instance variable violates DNR...How can I fix that?
+    @setlists = 5.times.map {@workout.setlists.build}
+    
+    @group = [@workout.build_group]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @workout }
@@ -35,13 +38,14 @@ class WorkoutsController < ApplicationController
   # GET /workouts/1/edit
   def edit
     @workout = Workout.find(params[:id])
+    @setlist = @workout.setlists #sets up the set list to be edited in the form generator
+    @group = @workout.group
   end
 
   # POST /workouts
   # POST /workouts.json
   def create
     @workout = Workout.new(params[:workout])
-
     respond_to do |format|
       if @workout.save
         format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
@@ -57,6 +61,7 @@ class WorkoutsController < ApplicationController
   # PUT /workouts/1.json
   def update
     @workout = Workout.find(params[:id])
+
 
     respond_to do |format|
       if @workout.update_attributes(params[:workout])
