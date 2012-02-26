@@ -14,7 +14,8 @@
 
 	<div class "field">
 		<%#= f.label :exercise, "Describe the workout" %><br />
-		<%= f.select :group_id, Group.all.collect {|e| [e.name, e.id]} %>
+		<%#= make a form helper to do the collecting, also define the action in the model (having classes in views is code smell) %>
+		<%= f.select :group_id, Group.all.collect {|e| [e.name, e.id]} %> 
 	</div>
 	<br />
 

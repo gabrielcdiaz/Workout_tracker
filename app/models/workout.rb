@@ -11,13 +11,5 @@ class Workout < ActiveRecord::Base
   # Why can't I get this to work?? See Below
   #validates :name, {:unqiueness => true, on => :create}
   # Read the validations guide! http://guides.rubyonrails.org/active_record_validations_callbacks.html
- 
-  def exercise
-  end
   
- 
-  
-  # def exercise=(exercise_id)
-  #   self.setlists.build(:exercise_id => exercise_id)
-  # end
 end
