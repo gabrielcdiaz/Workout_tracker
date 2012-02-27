@@ -1,13 +1,11 @@
 <h1>Listing exercises</h1>
 
-<table>
+<table class = "table table-striped">
+ <thead>
   <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>Name</td>
   </tr>
-
+</thead>
 <% @exercises.each do |exercise| %>
   <tr>
     <td><%= exercise.name %></td>

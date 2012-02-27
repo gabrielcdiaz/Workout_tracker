@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p> 
+	<b>Name </b>
+	<%= @group.name %>
+</p>
+
+<p>
+<% @group.workouts.each do |workout| %>	
+	<p> 
+		<%= link_to workout.name, workout%>
+	</p>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

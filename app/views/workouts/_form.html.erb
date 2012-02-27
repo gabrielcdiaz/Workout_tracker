@@ -32,7 +32,7 @@
 	<%= f.fields_for :setlists, @setlists do |s| %>
 	<div class "field">
 		<%#= f.label :exercise, "Describe the workout" %><br />
-		<%= s.select :exercise_id, Exercise.all.collect {|e| [e.name, e.id]} %>
+		<%= s.select :exercise_id, Exercise.all.collect {|e| [e.name, e.id]}, {:order => 'name'} %>
 	</div>
 	<% end %><br />
 	
