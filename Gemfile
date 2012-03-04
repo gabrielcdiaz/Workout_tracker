@@ -22,9 +22,9 @@ end
 
 gem 'jquery-rails'
 
-gem "paperclip", "~> 2.0"
+#gem "paperclip", "~> 2.0"
 
-gem "twitter-bootstrap-rails"
+#gem "twitter-bootstrap-rails"
 
 # For Heroku
 gem "activerecord-postgresql-adapter"
