@@ -1,4 +1,10 @@
 Workouts::Application.routes.draw do
+  get '/logout' => 'sessions#destroy'
+  
+  resources :sessions, :only => [:new, :create, :destroy]
+  
+  resources :users
+
   resources :groups
 
   resources :exercises

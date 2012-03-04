@@ -1,7 +1,7 @@
 <%= form_for(@workout) do |f| %>
 
 	<% if @workout.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-error">
       <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this awesome workout from being saved:</h2>
 
       <ul>
@@ -12,8 +12,9 @@
     </div>
   <% end %>
 
+	<br />
 	<div class "field">
-		<%#= f.label :exercise, "Describe the workout" %><br />
+		<%= f.label "Select a Group for this Workout" %><br />
 		<%#= make a form helper to do the collecting, also define the action in the model (having classes in views is code smell) %>
 		<%= f.select :group_id, Group.all.collect {|e| [e.name, e.id]} %> 
 	</div>
@@ -23,16 +24,11 @@
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
 	</div> 
-	
-	<div class "field">
-		<%= f.label :description, "Describe the workout" %><br />
-		<%= f.text_area :description %>
-	</div>
 
 	<%= f.fields_for :setlists, @setlists do |s| %>
 	<div class "field">
 		<%#= f.label :exercise, "Describe the workout" %><br />
-		<%= s.select :exercise_id, Exercise.all.collect {|e| [e.name, e.id]}, {:order => 'name'} %>
+		<%= s.select :exercise_id, Exercise.order("name ASC").all.collect {|e| [e.name, e.id]} %>
 	</div>
 	<% end %><br />
 	
