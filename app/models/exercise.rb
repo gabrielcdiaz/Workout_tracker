@@ -4,5 +4,6 @@ class Exercise < ActiveRecord::Base
   
   validates :name, :presence => true
   #Comment test
+  # Other comment test
   
 end
