@@ -1,0 +1,21 @@
+<h1>Listing user_workouts</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_workouts.each do |user_workout| %>
+  <tr>
+    <td><%= link_to 'Show', user_workout %></td>
+    <td><%= link_to 'Edit', edit_user_workout_path(user_workout) %></td>
+    <td><%= link_to 'Destroy', user_workout, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User workout', new_user_workout_path %>

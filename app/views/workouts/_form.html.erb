@@ -16,7 +16,7 @@
 	<div class "field">
 		<%= f.label "Select a Group for this Workout" %><br />
 		<%#= make a form helper to do the collecting, also define the action in the model (having classes in views is code smell) %>
-		<%= f.select :group_id, Group.all.collect {|e| [e.name, e.id]} %> 
+		<%= f.select :group_id, group_names %> 
 	</div>
 	<br />
 
@@ -28,7 +28,7 @@
 	<%= f.fields_for :setlists, @setlists do |s| %>
 	<div class "field">
 		<%#= f.label :exercise, "Describe the workout" %><br />
-		<%= s.select :exercise_id, Exercise.order("name ASC").all.collect {|e| [e.name, e.id]} %>
+		<%= s.select :exercise_id, exercise_names %>
 	</div>
 	<% end %><br />
 	

@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  #before_filter :login_required
+  before_filter :login_required
   
   # GET /workouts
   # GET /workouts.json
