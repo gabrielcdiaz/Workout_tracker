@@ -3,9 +3,8 @@ class CreateUserWorkouts < ActiveRecord::Migration
     create_table :user_workouts do |t|
       t.references :workout
       t.references :user
-      t.string :exercise
+      t.references :exercise
       t.integer :weight
-      
       t.timestamps
     end
   end

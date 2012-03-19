@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    @current_user = User.find_by_email(session[:email])
+    @current_user ||= User.find_by_email(session[:email])
   end
   ##Lets the model view use this method!
   helper_method :current_user

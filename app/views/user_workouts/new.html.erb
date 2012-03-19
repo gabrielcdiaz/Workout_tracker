@@ -1,5 +1,29 @@
 <h1>New user_workout</h1>
 
-<%= render 'form' %>
+
+
+<!-- for each exercise in the workout create a new userworkout for this user and this exercise and this workout -->
+<!-- get working form tag -->
+<%= form_tag('/user_workouts', :method => :post) do %>
+	<% @user_workouts.each do |uw| %>
+		<%= label_tag :uw, uw.exercise.name  %>
+		<%= number_field_tag "user_workouts[exercise.id][weight]" %>
+
+		
+	<% end %>
+<% end %>
+	
+<%= submit_tag %>
+
 
 <%= link_to 'Back', user_workouts_path %>
+
+<!-- params[:user_workouts] = [{:7 => {:weight => 10}}] -->
+<!-- Step 1
+Select group
+Select workout
+
+Step 2
+see workout group
+see workout name
+enter weights for each exercise in workout -->

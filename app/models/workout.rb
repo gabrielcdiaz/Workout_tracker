@@ -2,6 +2,8 @@ class Workout < ActiveRecord::Base
   belongs_to :group
   has_many :setlists
   has_many :exercises, :through => :setlists
+  has_many :user_workouts
+  has_many :users, :through => :user_workouts
   
   accepts_nested_attributes_for :setlists
   

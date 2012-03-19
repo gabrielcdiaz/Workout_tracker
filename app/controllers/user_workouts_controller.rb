@@ -24,7 +24,15 @@ class UserWorkoutsController < ApplicationController
   # GET /user_workouts/new
   # GET /user_workouts/new.json
   def new
-    @user_workout = UserWorkout.new
+    # @user_workout = UserWorkout.new
+    @group = Group.first
+    @workout = @group.workouts.first
+    @exercises = @workout.exercises 
+    @user_workouts = @exercises.collect{|exercise|
+      current_user.user_workouts.build(:workout => @workout, :exercise => exercise)
+      #UserWorkout.new (:user => current_user, :workout => @workout, :exercise => exercise)
+      # These two are the same, but the used line is more expressive
+    }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +48,18 @@ class UserWorkoutsController < ApplicationController
   # POST /user_workouts
   # POST /user_workouts.json
   def create
+    # params[] 
+    # :user_workouts => [
+    #     :excerise_7 => {:weight => 10},
+    #     :exercise_10 => {:weight => 11}
+    # ]
+    
+    params[:user_workouts].each do |user_workout|
+      user_workout.each do |exercise_id_string, weight_hash|
+        UserWorkout.new(:exercise_id => exercise_id_string.gsub(/excerise_/, ""), :weight => weight_hash[:weight])
+      end
+    end
+    
     @user_workout = UserWorkout.new(params[:user_workout])
 
     respond_to do |format|
