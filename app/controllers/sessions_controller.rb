@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    
   end
 
   def create
@@ -11,15 +12,24 @@ class SessionsController < ApplicationController
       # store the user_id in the session
       session[:user_id]= user.id
     # otherwise redirect them to login
+    redirect_to current_user
     else 
       flash.now.notice = "Invalid email or password"
       render "new"
+      
     end
         
     # use the user_id in the session to load the user when login_required
     session[:user_id] = params[:user_id]
     
     session[:email] = params[:email]
+    
+    
+  end
+  
+  def destroy
+    reset_session
+    redirect_to root_url, :notice => "Logged out!"
   end
  
  private
@@ -29,10 +39,7 @@ class SessionsController < ApplicationController
    redirect_to back_to, :notice => "Logged in!"
   end
    
-  def destroy
-    reset_session
-    redirect_to root_url, :notice => "Logged out!"
-  end
+
   
 
 end

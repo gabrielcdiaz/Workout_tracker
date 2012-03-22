@@ -2,7 +2,7 @@ class UserWorkoutsController < ApplicationController
   # GET /user_workouts
   # GET /user_workouts.json
   def index
-    @user_workouts = UserWorkout.all
+    @user_workouts = current_user.user_workouts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,27 +50,19 @@ class UserWorkoutsController < ApplicationController
   def create
     # params[] 
     # :user_workouts => [
-    #     :excerise_7 => {:weight => 10},
+    #     :7 => {:weight => 10},
     #     :exercise_10 => {:weight => 11}
     # ]
+    # raise params.inspect
     
     params[:user_workouts].each do |user_workout|
-      user_workout.each do |exercise_id_string, weight_hash|
-        UserWorkout.new(:exercise_id => exercise_id_string.gsub(/excerise_/, ""), :weight => weight_hash[:weight])
-      end
+      exercise_id = user_workout.first
+      weight = user_workout.last[:weight]
+      UserWorkout.create(:workout_id => params[:workout_id], :exercise_id => exercise_id, :weight => weight, :user => current_user)
     end
     
-    @user_workout = UserWorkout.new(params[:user_workout])
-
-    respond_to do |format|
-      if @user_workout.save
-        format.html { redirect_to @user_workout, notice: 'User workout was successfully created.' }
-        format.json { render json: @user_workout, status: :created, location: @user_workout }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user_workout.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to user_workouts_path
+    
   end
 
   # PUT /user_workouts/1
