@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p> 
-	<b>Name </b>
-	<%= @workout.name %>
+<p>
+	<div class ="page header"> 
+		<h1><%= @workout.group.name %>: <%= @workout.name %></h1>
+	</div>
 </p>
 
 <p>
@@ -14,5 +15,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_workout_path(@workout), :class => "btn"  %> |
+<%= link_to 'Do it!', new_user_workout_path(:workout_id => @workout), :class => "btn btn-primary"  %>
+<%= link_to 'Edit', edit_workout_path(@workout), :class => "btn"  %>
 <%= link_to 'Back', workouts_path, :class => "btn"  %>

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       # store the user_id in the session
       session[:user_id]= user.id
     # otherwise redirect them to login
-    redirect_to current_user
+    redirect_to users_path(current_user)
     else 
       flash.now.notice = "Invalid email or password"
       render "new"

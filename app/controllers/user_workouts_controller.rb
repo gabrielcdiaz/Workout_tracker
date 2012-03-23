@@ -25,8 +25,9 @@ class UserWorkoutsController < ApplicationController
   # GET /user_workouts/new.json
   def new
     # @user_workout = UserWorkout.new
-    @group = Group.first
-    @workout = @group.workouts.first
+
+    @workout = Workout.find params[:workout_id]
+    @group = @workout.group
     @exercises = @workout.exercises 
     @user_workouts = @exercises.collect{|exercise|
       current_user.user_workouts.build(:workout => @workout, :exercise => exercise)

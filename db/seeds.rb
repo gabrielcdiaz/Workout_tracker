@@ -40,3 +40,5 @@ end
   exe = Exercise.create(name: e)
   Setlist.create(:workout => @workout2, :exercise => exe)
 end
+
+@yellow.workouts << @workout2
