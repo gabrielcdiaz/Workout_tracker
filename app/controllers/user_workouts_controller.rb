@@ -5,7 +5,6 @@ class UserWorkoutsController < ApplicationController
     @user_workouts = current_user.user_workouts.group_by(&:workout_id)
 
     respond_to do |format|
-      
   end
 
   # GET /user_workouts/1
