@@ -5,6 +5,9 @@ class UserWorkoutsController < ApplicationController
     @user_workouts = current_user.user_workouts.group_by(&:workout_id)
 
     respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user_workout }
+      end
   end
 
   # GET /user_workouts/1
