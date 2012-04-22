@@ -1,4 +1,7 @@
 class UserWorkoutsController < ApplicationController
+
+before_filter :login_required
+
   # GET /user_workouts
   # GET /user_workouts.json
   def index

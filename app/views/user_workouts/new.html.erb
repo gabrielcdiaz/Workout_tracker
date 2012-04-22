@@ -1,6 +1,6 @@
-<h1>New user_workout</h1>
+<h1><%=current_user.name%></h1>
 
-<h2>Group <%= @group.name %>: Workouts: <%= @workout.name %> </h2>
+<h2><%= @group.name %>: <%= @workout.name %> </h2>
 
 
 <!-- for each exercise in the workout create a new userworkout for this user and this exercise and this workout -->

@@ -1,4 +1,7 @@
 class ExercisesController < ApplicationController
+  
+before_filter :login_required
+
   # GET /exercises
   # GET /exercises.json
   def index
