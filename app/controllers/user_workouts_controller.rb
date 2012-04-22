@@ -2,7 +2,7 @@ class UserWorkoutsController < ApplicationController
   # GET /user_workouts
   # GET /user_workouts.json
   def index
-    @user_workouts = current_user.user_workouts
+    @user_workouts = current_user.user_workouts.group_by(&:workout_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +14,7 @@ class UserWorkoutsController < ApplicationController
   # GET /user_workouts/1.json
   def show
     @user_workout = UserWorkout.find(params[:id])
+    @user_workout_list =  @user_workout.workout_items.group_by(&:workout_id)
 
     respond_to do |format|
       format.html # show.html.erb

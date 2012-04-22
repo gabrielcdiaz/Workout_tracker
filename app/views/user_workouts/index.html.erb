@@ -1,21 +1,26 @@
-<h1>Listing user_workouts</h1>
+<h1>Workout History</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<br/>
 
-<% @user_workouts.each do |user_workout| %>
-  <tr>
-    <td><%= link_to 'Show', user_workout %></td>
-    <td><%= link_to 'Edit', edit_user_workout_path(user_workout) %></td>
-    <td><%= link_to 'Destroy', user_workout, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% @user_workouts.each do |workout_id, workouts| %>
+	<h3><%= Workout.find(workout_id).group.name %>: <%= Workout.find(workout_id).name %></h3>
+	<table class="table table-striped">
+  		<tr>	
+			<th> Date</th>
+			<% Workout.find(workout_id).exercises.each do |e| %>
+			<th><%= e.name %></th>												
+			<% end %>																					
+  		</tr>
+  		<% workouts.group_by{|w| "#{w.created_at.month}/#{w.created_at.day}/#{w.created_at.year}"}.each do |date, workouts_by_day|%>
+		<tr>
+			<td><%= date %></td>
+			<% workouts_by_day.each do |w| %>
+			<td><%= w.weight %></td>			
+			<% end %>
+  		</tr>
+		<% end %>
+	</table>
+	<br/>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New User workout', new_user_workout_path %>
