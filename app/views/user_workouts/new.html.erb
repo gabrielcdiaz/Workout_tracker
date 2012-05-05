@@ -12,12 +12,13 @@
 	<% @user_workouts.each do |uw| %>
 		<%= label_tag :uw, uw.exercise.name  %>
 		<%= number_field_tag "user_workouts[#{uw.exercise.id}][weight]" %>
+		<%= @weight %>
 	<% end %>
 	
+	<br/>
 	<%= submit_tag %>
 <% end %>
 	
-
 
 
 <%= link_to 'Back', user_workouts_path %>

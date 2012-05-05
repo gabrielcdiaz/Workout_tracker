@@ -39,6 +39,7 @@ before_filter :login_required
       # These two are the same, but the used line is more expressive
     }
 
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user_workout }

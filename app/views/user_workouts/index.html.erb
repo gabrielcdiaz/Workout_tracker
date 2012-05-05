@@ -11,7 +11,7 @@
 			<th><%= e.name %></th>												
 			<% end %>																					
   		</tr>
-  		<% workouts.group_by{|w| "#{w.created_at.month}/#{w.created_at.day}/#{w.created_at.year}"}.each do |date, workouts_by_day|%>
+  		<% workouts.group_by{|w| w.created_at.strftime("%m/%d/%Y")}.each do |date, workouts_by_day|%>
 		<tr>
 			<td><%= date %></td>
 			<% workouts_by_day.each do |w| %>
