@@ -46,7 +46,7 @@
             </ul>
 			<ul class="nav pull-right">
 				<% if logged_in? %>
-					<li><%= link_to current_user.name, "/users"  %></li>	
+					<li><%= link_to current_user.name, "/users/#{current_user.id}" %></li>	
 					<li class="divider-vertical"></li>
 		  	  		<li><%= link_to 'Logout', logout_path %></li>
 		  	    <% else %>
