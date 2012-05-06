@@ -16,6 +16,9 @@ Workouts::Application.routes.draw do
   resources :exercises
 
   resources :workouts
+  
+  get "about" => "info#about", :as => "about"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

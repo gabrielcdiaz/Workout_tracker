@@ -10,9 +10,8 @@
   </thead>
 <% @workouts.each do |workout| %>
   <tr>
-	<td><%= workout.group.name %></td>
+	<td><%= link_to workout.group.name, workout %></td>
 	<td><%= workout.name %></td>
-    <td><%= link_to 'Show', workout %></td>
     <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
     <td><%= link_to 'Destroy', workout, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
