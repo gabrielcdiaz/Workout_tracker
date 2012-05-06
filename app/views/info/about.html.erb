@@ -5,19 +5,11 @@
 	<p class= "lead"> 
 		LiftApp is a workout tracking app for 5x5 weight lifting workouts. Everything you need to know about LiftApp is right here, so let's get started. 
 	</p>
-	<div class="button-group">
-		<button class="btn">
-			<a href="#howto">How to use LiftApp</a>
-		</button>
-		<button class="btn">
-			<a href="#features">Features</a>
-		</button>
-		<button class="btn">
-			<a href="#soon">Coming Soon</a>
-		</button>
-		<button class="btn">
-			<a href="#auth">Author</a>
-		</button>
+	<div class="btn-group">
+<%= link_to "How to Use LiftApp", "#howto", :class => "btn btn-primary"  %>
+<%= link_to "Features", "#features", :class => "btn btn-primary"  %>
+<%= link_to "Coming Soon", "#soon", :class => "btn btn-primary"  %>
+<%= link_to "Author", "#auth", :class => "btn btn-primary"  %>
 	</div>
 </div>
 
@@ -27,7 +19,40 @@
 <div class="page-header">
     <h1>How to use LiftApp <small> What the site does and how you can use it</small></h1>
 </div>
+<div class="row">
+	<div class="span8">
+	<h2>What is a 5x5 workout? <small>It's a weight lifting routine that has you do 5 sets with 5 reps of compound muscle exercises.</small></h2>
+	</div> 
+	<br/>
+
+    <div class="span4">
+      <h2>1. Check Out Exercises</h2>
+      <p>LiftApp has a big list of exercises. Check it out. If you don't see the exercises you want, create them.</p>
+      <p>When you add an exercise to the database every user can now see them and use them in their workouts.</p>
+    </div>
+    <div class="span4">
+      <h2>2. Create a Group</h2>
+      <p>I know what you're thinking! It's time to make a 5x5 out of my exercises. Groups let your organize your workouts and all workouts belong to groups. So make one for yourself right here.</p>
+
+    </div>
+  </div>
+<div class="row">
+    <div class="span4">
+      <h2>3. Create a Workout</h2>
+      <p>When you create a workout you pick from a list of existing groups. Then you give it a name. Then you add your exercises.</p>
+      <p>Once you create a workout every user can user can do it.</p>
+    </div>
+    <div class="span4">
+      <h2>4. Do a Workout</h2>
+      <p>When you see the workout list, click the name of the workout you want to do. Look for the <%= link_to "Do it!", "#howto", :class => "btn btn-primary"  %> button. </p>
+      <p> When you are entering your workout weight, be sure to do five sets at that weight. Some folks vary the weight over five sets and take the average.
+	
+    </div>
+  </div>
+
 </section>
+
+
 <br/>
 <section id="features">
 <div class="page-header">
