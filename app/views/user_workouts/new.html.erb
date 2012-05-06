@@ -12,6 +12,7 @@
 	<% @user_workouts.each do |uw| %>
 		<%= label_tag :uw, uw.exercise.name  %>
 		<%= number_field_tag "user_workouts[#{uw.exercise.id}][weight]" %>
+		<%= current_user.last_workout_of_exercise(uw.exercise_id) %>
 		<%= @weight %>
 	<% end %>
 	

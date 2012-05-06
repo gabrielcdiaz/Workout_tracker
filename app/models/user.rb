@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def last_workout_of_exercise(exercise_id)
+    workout = self.user_workouts.of_exercise(exercise_id).last
+    return workout.present? ? workout.weight : ''
+  end
+
   def name=(string)
     names = string.split(" ")
     self.first_name, self.last_name = case names.count
@@ -16,4 +21,5 @@ class User < ActiveRecord::Base
         [names.first, names.last]
     end
   end
+
 end
