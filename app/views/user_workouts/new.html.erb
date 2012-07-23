@@ -1,3 +1,20 @@
+
+<script type="text/javascript">
+function calcAvg(fields ) 
+{
+		var set1 = parseInt(document.getElementById("set1").value);
+		var set2 = parseInt(document.getElementById("set2").value);
+		var set3 = parseInt(document.getElementById("set3").value);
+		var set4 = parseInt(document.getElementById("set4").value);
+		var set5 = parseInt(document.getElementById("set5").value);
+
+		var avg = (set1+set2+set3+set4+set5)/5;
+		var outputField = document.getElementById("user_workouts_9_weight");
+		outputField.value = avg;
+
+}
+</script>
+
 <h1><%=current_user.name%></h1>
 
 <h2><%= @group.name %>: <%= @workout.name %> </h2>
@@ -8,14 +25,56 @@
 <%= form_tag('/user_workouts', :method => :post) do %>
 	<%= hidden_field_tag :group_id, @group.id %>
 	<%= hidden_field_tag :workout_id, @workout.id %>
-	
-	<% @user_workouts.each do |uw| %>
+
+<% numbers = ["One", "Two", "Three", "Four", "Five", "Six"] %>
+
+<div class="accordion" id="accordion1">	
+<div class="accordion-group">
+	<% @user_workouts.each_with_index do |uw, n| %>
+
+
 		<%= label_tag :uw, uw.exercise.name  %>
-		<%= number_field_tag "user_workouts[#{uw.exercise.id}][weight]" %>
-		<%= current_user.last_workout_of_exercise(uw.exercise_id) %>
-		<%= @weight %>
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= numbers[n] %>">
+				<%= number_field_tag "user_workouts[#{uw.exercise.id}][weight]" %>
+				<%= current_user.last_workout_of_exercise(uw.exercise_id) %>
+				<%= @weight %>
+				</a> <!-- link for accordion header -->
+
+				
+			</div> <!-- Accordion Heading -->
+					<div id="collapse<%= numbers[n] %>" class="accordion-body collapse">
+	                	<div class="accordion-inner">
+
+								<div class="row-fluid">
+									<div class="span10">
+
+										<br/>
+										<div class="row-fluid">
+										<form name ="setsForm">
+										<table>
+											<tbody>
+												<tr>
+												<td><input id="set<%= n*5+1%>" name="set1" type="number" data-group="<%= n %>exercise_<%= uw.exercise_id %>"class='calc-avg' style ="width: 75%" ></td>
+												<td><input id="set<%= n*5+2%>" name="set2" type="number" data-group="<%= n %>exercise_<%= uw.exercise_id %>" class='calc-avg' style ="width: 75%"></td>
+												<td><input id="set<%= n*5+3%>" name="set3" type="number" data-group="<%= n %>exercise_<%= uw.exercise_id %>" class='calc-avg' style ="width: 75%"></td>
+												<td><input id="set<%= n*5+4%>" name="set4" type="number" data-group="<%= n %>exercise_<%= uw.exercise_id %>" class='calc-avg' style ="width: 75%"></td>
+												<td><input id="set<%= n*5+5%>" name="set5" type="number" data-group="<%= n %>exercise_<%= uw.exercise_id %>"class='calc-avg' style ="width: 75%"></td>
+												</tr>
+											</tbody>
+										</table>
+										<!-- <button class="btn-large" onClick="calculateAverage(this.form); return false;">Link</button> -->
+										</form>
+										</div> <!--Fluid Row-->
+								 	</div> <!-- span 10 div -->
+
+
+						</div> <!-- Accordion inner -->
+					</div> <!-- Accordion Body created by the crazy-ass string thing up there -->
+
+		</div> <!-- accordion group -->
 	<% end %>
-	
+</div> <!-- accordion div -->
 	<br/>
 	<%= submit_tag %>
 <% end %>

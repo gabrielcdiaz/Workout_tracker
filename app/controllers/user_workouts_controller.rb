@@ -29,7 +29,7 @@ before_filter :login_required
   # GET /user_workouts/new.json
   def new
     # @user_workout = UserWorkout.new
-
+   
     @workout = Workout.find params[:workout_id]
     @group = @workout.group
     @exercises = @workout.exercises 
@@ -37,6 +37,7 @@ before_filter :login_required
       current_user.user_workouts.build(:workout => @workout, :exercise => exercise)
       #UserWorkout.new (:user => current_user, :workout => @workout, :exercise => exercise)
       # These two are the same, but the used line is more expressive
+    
     }
 
     
