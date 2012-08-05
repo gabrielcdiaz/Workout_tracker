@@ -1,24 +1,24 @@
-function calcAvg(group) 
-{
-		$(gr)
-		var set1 = parseInt(document.getElementById("set1").value);
-		var set2 = parseInt(document.getElementById("set2").value);
-		var set3 = parseInt(document.getElementById("set3").value);
-		var set4 = parseInt(document.getElementById("set4").value);
-		var set5 = parseInt(document.getElementById("set5").value);
+function calcAvg(group_index) {
+    // Get the sibling elements of the blurred input
+    var sets = $(".calc-avg[data-group-index='" + group_index + "']");
 
-		var avg = (set1+set2+set3+set4+set5)/5;
-		var outputField = document.getElementById("user_workouts_9_weight");
-		outputField.value = avg;
+    // Iterate on all there values and adding them to the average variable
+    for (var i = 0, average = 0; i < sets.length; i++) {
+        var reps = $(sets[i]).val();
+        if (reps)
+            average += parseInt(reps);
+    }
 
-};
+    // Calculating the average ...
+    average /= i;
 
-$(function(){
-	$("input.calc-avg").blur(function(){
-		group = $(this).attr("data")
-		calcAvg(group);
-		// onBlur="calcAvg(); return false;"
-	})
+    // Setting the average in the input with the class .result-avg
+    $(".result-avg[data-group-index='" + group_index + "']").val(average);
+}
+
+$(function () {
+    $("input.calc-avg").blur(function () {
+        // Calling calcAvg() method with the group-index of the blurred input
+        calcAvg($(this).data("group-index"))
+    })
 })
-
-//data attribute selector (input.data_group)
