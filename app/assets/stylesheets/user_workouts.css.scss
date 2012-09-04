@@ -4,6 +4,11 @@
 
 #user_workout_accordion {
   a.accordion-toggle:hover {
-    background-color: pink;
+    background-color: transparent;
   }
 }
+
+#accordion_weights {
+  color: #000;
+  &:hover {
+    color: #000; } }
